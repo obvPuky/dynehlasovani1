@@ -18,8 +18,10 @@ Veřejný publishable / anon key může být v repozitáři: opravňuje pouze k 
 ## 2. GitHub Pages
 
 1. Nahrajte tento projekt do větve `main` svého repozitáře.
-2. V **Settings → Pages → Build and deployment → Source** vyberte **GitHub Actions**.
-3. Workflow [pages.yml](.github/workflows/pages.yml) spustí testy a publikuje pouze adresář `site`.
+2. V **Settings → Pages → Build and deployment → Source** můžete ponechat **Deploy from a branch**, větev **main**, složku **/ (root)**. Projekt obsahuje připravené stránky i v kořeni, takže adresy `/hlasovani/` a `/vysledky/` fungují přímo.
+3. Alternativně zvolte **GitHub Actions**. Workflow [pages.yml](.github/workflows/pages.yml) zjistí zvolený způsob publikování: při publikaci z větve zkontroluje zveřejněný web, při publikaci přes Actions nasadí adresář `site`. Obě varianty ověřují skutečné HTTP odpovědi i dostupnost databázových funkcí bez přidávání testovacích hlasů.
+
+Zdroj frontendu se upravuje v `site/`. Po změnách spusťte `npm run prepare:pages` a nahrajte i aktualizované soubory `index.html`, `assets/`, `hlasovani/`, `vysledky/` a `.nojekyll` v kořeni repozitáře. Testy zachytí chybějící nebo neaktuální kopie, aby se chyba 404 nevrátila.
 
 Pro tento repozitář budou standardní adresy:
 

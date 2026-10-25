@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#f7f4ed" />
+    <title>Výsledky · Veselé dýně</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <script type="module" src="../assets/results.js"></script>
+  </head>
+  <body>
+    <header class="site-header wrap">
+      <a class="brand" href="../hlasovani/"
+        ><img src="../assets/favicon.svg" width="34" height="34" alt="" /><span
+          >Veselé dýně<span class="brand-dot">.</span></span
+        ></a
+      ><span class="admin-badge">Přehled pořadatele</span>
+    </header>
+    <main class="wrap results-main">
+      <div class="results-heading">
+        <p class="eyebrow">KAŽDÝ HLAS SE POČÍTÁ</p>
+        <h1>Jak si dýně <em>vedou?</em></h1>
+        <p class="hero-description">Přehled hlasů v naší školní soutěži.</p>
+      </div>
+      <section
+        class="login-card"
+        id="login-section"
+        aria-labelledby="login-title"
+      >
+        <span class="login-symbol" aria-hidden="true">✳︎</span>
+        <h2 id="login-title">Vstup pro pořadatele</h2>
+        <p>Pro zobrazení výsledků zadejte heslo.</p>
+        <form id="login-form">
+          <label for="results-password">Heslo k výsledkům</label
+          ><input
+            id="results-password"
+            type="password"
+            autocomplete="current-password"
+            required
+            maxlength="256"
+          /><button class="button" id="login-button" type="submit">
+            Zobrazit výsledky
+            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 19 19 5M6 5h13v13" />
+            </svg>
+          </button>
+        </form>
+        <p id="login-message" class="form-message" role="status"></p>
+      </section>
+      <section id="results-content" hidden aria-label="Výsledky hlasování">
+        <div class="results-toolbar">
+          <p id="updated-at" role="status"></p>
+          <div>
+            <button
+              class="button button-secondary button-small"
+              id="refresh-results"
+              type="button"
+            >
+              Obnovit</button
+            ><button class="text-button" id="logout" type="button">
+              Odhlásit se
+            </button>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card">
+            <p>Odevzdaných hlasů</p>
+            <strong id="total-votes">0</strong
+            ><span>Celkem v celé soutěži</span>
+          </article>
+          <article class="stat-card stat-highlight">
+            <p id="leader-label">Průběžně vede</p>
+            <strong id="leader-name">—</strong
+            ><span id="leader-detail">Zatím bez hlasů</span>
+          </article>
+          <article class="stat-card">
+            <p>Podíl vedoucí dýně</p>
+            <strong id="leader-percent">0 %</strong
+            ><span id="leader-percent-note">Ze všech odevzdaných hlasů</span>
+          </article>
+        </div>
+        <div class="result-list-heading">
+          <h2>Všech 16 dýní</h2>
+          <span>Seřazeno podle počtu hlasů</span>
+        </div>
+        <div class="results-table-container">
+          <table class="results-table">
+            <caption class="sr-only">
+              Pořadí, počet hlasů a podíl každé dýně
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Pořadí</th>
+                <th scope="col">Dýně</th>
+                <th scope="col">Podíl hlasů</th>
+                <th scope="col">Hlasy</th>
+              </tr>
+            </thead>
+            <tbody id="results-rows"></tbody>
+          </table>
+        </div>
+        <p class="results-footnote">
+          Procenta vyjadřují podíl z odevzdaných hlasů, nikoli účast celé školy.
+          Při shodě se dýně dělí o stejné místo.
+        </p>
+        <p class="form-message" id="results-message" role="status"></p>
+      </section>
+    </main>
+    <footer class="site-footer wrap">
+      <span>Veselé dýně<span class="brand-dot">.</span></span>
+      <p>Školní soutěž plná podzimní fantazie.</p>
+    </footer>
+    <noscript
+      ><p class="noscript-note">
+        Pro zobrazení výsledků zapněte JavaScript.
+      </p></noscript
+    >
+  </body>
+</html>

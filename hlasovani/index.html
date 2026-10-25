@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f4ed" />
+    <meta
+      name="description"
+      content="Šestnáct dýní, spousta nápadů a jeden váš hlas. Vyberte nejpovedenější dýni v naší školní soutěži Veselé dýně."
+    />
+    <title>Hlasování · Veselé dýně</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <script type="module" src="../assets/voting.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#vyber">Přeskočit na výběr dýně</a>
+    <header class="site-header wrap">
+      <a class="brand" href="./" aria-label="Veselé dýně – úvod"
+        ><img src="../assets/favicon.svg" width="34" height="34" alt="" /><span
+          >Veselé dýně<span class="brand-dot">.</span></span
+        ></a
+      >
+      <span class="header-note"
+        ><span class="tiny-leaf" aria-hidden="true">✳︎</span> Naše školní
+        podzimní tradice</span
+      >
+    </header>
+
+    <main class="wrap">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span aria-hidden="true">✦</span> ŠKOLNÍ DÝŇOVÁ SOUTĚŽ
+          </p>
+          <h1 id="hero-title">Malé dílo.<br />Velká <em>radost.</em></h1>
+          <p class="hero-description">
+            Někdo je vyřezal. Někdo je pomaloval.<br />Vy rozhodnete, která dýně
+            vám vykouzlí největší úsměv.
+          </p>
+          <a class="button hero-button" href="#vyber"
+            >Najít svou favoritku
+            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 19 19 5M6 5h13v13" /></svg
+          ></a>
+          <div class="hero-facts">
+            <span><b>16</b> originálních dýní</span
+            ><span class="fact-divider" aria-hidden="true"></span
+            ><span><b>1</b> váš hlas</span>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-sun"></div>
+          <span class="art-spark spark-one">✦</span
+          ><span class="art-spark spark-two">✧</span>
+          <span class="art-leaf leaf-one"></span
+          ><span class="art-leaf leaf-two"></span>
+          <img
+            class="hero-pumpkin"
+            src="../assets/hero.svg"
+            alt=""
+            width="570"
+            height="430"
+          />
+          <div class="art-sticker">
+            Každá je<br /><strong>originál!</strong
+            ><svg viewBox="0 0 55 20">
+              <path d="M2 12 Q24 2 48 10 M39 2 L50 10 L39 17" />
+            </svg>
+          </div>
+          <span class="art-caption"
+            >S láskou vytvořeno. S radostí vybráno.</span
+          >
+        </div>
+      </section>
+
+      <section
+        class="selection-section"
+        id="vyber"
+        aria-labelledby="selection-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MALÁ GALERIE VELKÝCH NÁPADŮ</p>
+            <h2 id="selection-title">Která vás chytla za srdce?</h2>
+          </div>
+          <span class="section-hint"
+            >Vyberte jednu dýni
+            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m5 5 14 14M6 19h13V6" /></svg
+          ></span>
+        </div>
+        <p class="gallery-note">
+          Čísla odpovídají dýním na školní výstavě. Obrázky jsou ilustrační.
+        </p>
+        <form id="vote-form">
+          <fieldset class="pumpkin-fieldset">
+            <legend class="sr-only">Vyberte jednu ze šestnácti dýní</legend>
+            <div class="pumpkin-grid" id="pumpkin-grid"></div>
+          </fieldset>
+          <div class="vote-panel" id="vote-panel">
+            <div class="vote-panel-copy">
+              <span class="vote-heart" aria-hidden="true">♡</span>
+              <div>
+                <strong id="selection-label"
+                  >Každá dýně si zaslouží pozornost.</strong
+                >
+                <p id="selection-hint">
+                  Prohlédněte si je a vyberte svého favorita.
+                </p>
+              </div>
+            </div>
+            <button class="button" id="submit-vote" type="submit" disabled>
+              Odeslat hlas
+              <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 19 19 5M6 5h13v13" />
+              </svg>
+            </button>
+          </div>
+          <p
+            class="form-message"
+            id="vote-message"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </form>
+        <div class="success-card" id="success-card" hidden tabindex="-1">
+          <span class="success-icon" aria-hidden="true">✓</span>
+          <p class="eyebrow">MALÝ KLIK, VELKÁ RADOST</p>
+          <h2>Děkujeme za váš hlas!</h2>
+          <p id="success-detail"></p>
+          <p>Pomáháte nám oslavit nápady a šikovné ruce našich žáků.</p>
+          <span class="success-flourish" aria-hidden="true">✦</span>
+        </div>
+        <p class="fair-note" id="fair-note">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z" />
+            <path d="m8 12 3 3 5-6" />
+          </svg>
+          Hrajeme fér. Jeden hlas z jednoho prohlížeče. Bez zadávání osobních
+          údajů.
+        </p>
+      </section>
+      <section class="closing-note">
+        <span aria-hidden="true">✳︎</span>
+        <p>
+          Za každou dýní je nápad.<br /><strong
+            >A za každým nápadem někdo z nás.</strong
+          >
+        </p>
+      </section>
+    </main>
+    <footer class="site-footer wrap">
+      <span>Veselé dýně<span class="brand-dot">.</span></span>
+      <p>Školní soutěž plná podzimní fantazie.</p>
+      <span class="footer-love"
+        >Vytvořeno s radostí <span aria-hidden="true">♡</span></span
+      >
+    </footer>
+    <dialog id="confirm-dialog" aria-labelledby="confirm-title">
+      <form method="dialog" class="dialog-content">
+        <span class="dialog-pumpkin" aria-hidden="true">✦</span>
+        <h2 id="confirm-title">Tohle je vaše favoritka?</h2>
+        <p id="confirm-description"></p>
+        <p class="muted">Odeslaný hlas už nejde změnit.</p>
+        <div class="dialog-actions">
+          <button class="button button-secondary" value="cancel">
+            Ještě se podívám</button
+          ><button class="button" value="confirm">Ano, hlasuji</button>
+        </div>
+      </form>
+    </dialog>
+    <noscript
+      ><p class="noscript-note">
+        Pro hlasování zapněte JavaScript v prohlížeči.
+      </p></noscript
+    >
+  </body>
+</html>

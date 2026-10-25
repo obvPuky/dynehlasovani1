@@ -8,6 +8,7 @@
     "node": ">=22"
   },
   "scripts": {
+    "prepare:pages": "node scripts/prepare-pages.mjs",
     "start": "node scripts/serve.mjs",
     "test": "node --test"
   }

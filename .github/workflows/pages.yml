@@ -18,19 +18,36 @@ jobs:
     permissions:
       contents: read
       pages: read
+    outputs:
+      build_type: ${{ steps.pages-mode.outputs.build_type }}
+      page_url: ${{ steps.pages-mode.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
       - run: npm test
+      - name: Zjistit aktuální nastavení GitHub Pages
+        id: pages-mode
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/pages" --jq '"build_type=\(.build_type)\npage_url=\(.html_url)"' >> "$GITHUB_OUTPUT"
       - uses: actions/configure-pages@v5
+        if: steps.pages-mode.outputs.build_type == 'workflow'
       - uses: actions/upload-pages-artifact@v3
+        if: steps.pages-mode.outputs.build_type == 'workflow'
         with:
           path: site
+      - name: Ověřit web publikovaný z větve
+        if: steps.pages-mode.outputs.build_type != 'workflow'
+        env:
+          PAGES_URL: ${{ steps.pages-mode.outputs.page_url }}
+        run: node scripts/check-live.mjs "$PAGES_URL"
 
   deploy:
     needs: validate
+    if: needs.validate.outputs.build_type == 'workflow'
     permissions:
       pages: write
       id-token: write
@@ -39,6 +56,14 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
       - name: Publikovat web
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Ověřit zveřejněný web a spojení se Supabase
+        env:
+          PAGES_URL: ${{ steps.deployment.outputs.page_url }}
+        run: node scripts/check-live.mjs "$PAGES_URL"
