@@ -1,0 +1,14 @@
+{
+  "name": "vesele-dyne",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Školní hlasování Veselé dýně pro GitHub Pages a Supabase.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test"
+  }
+}
