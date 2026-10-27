@@ -63,7 +63,7 @@ jobs:
       - name: Publikovat web
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Ověřit zveřejněný web a spojení se Supabase
+      - name: Ověřit zveřejněný web
         env:
           PAGES_URL: ${{ steps.deployment.outputs.page_url }}
         run: node scripts/check-live.mjs "$PAGES_URL"

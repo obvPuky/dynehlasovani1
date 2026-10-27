@@ -1,5 +1,7 @@
 # Veselé dýně
 
+Hlasovací stránka nyní zobrazuje **Hlasování bylo ukončeno** a nenabízí výběr ani odeslání hlasu. Výsledková stránka zůstává dostupná pořadateli.
+
 Česká webová aplikace pro školní hlasování o nejpovedenější dýni. Statický web běží na GitHub Pages, skutečné společné hlasy ukládá Supabase (PostgreSQL). Nepotřebuje placený hosting ani sestavení frontendu; platí limity aktuálního tarifu služeb.
 
 - `/hlasovani/`: 16 očíslovaných dýní, výběr, potvrzení a poděkování. Bez odkazů na výsledky a bez zveřejněných počtů.
@@ -19,7 +21,7 @@ Veřejný publishable / anon key může být v repozitáři: opravňuje pouze k 
 
 1. Nahrajte tento projekt do větve `main` svého repozitáře.
 2. V **Settings → Pages → Build and deployment → Source** můžete ponechat **Deploy from a branch**, větev **main**, složku **/ (root)**. Projekt obsahuje připravené stránky i v kořeni, takže adresy `/hlasovani/` a `/vysledky/` fungují přímo.
-3. Alternativně zvolte **GitHub Actions**. Workflow [pages.yml](.github/workflows/pages.yml) zjistí zvolený způsob publikování: při publikaci z větve zkontroluje zveřejněný web, při publikaci přes Actions nasadí adresář `site`. Obě varianty ověřují skutečné HTTP odpovědi i dostupnost databázových funkcí bez přidávání testovacích hlasů.
+3. Alternativně zvolte **GitHub Actions**. Workflow [pages.yml](.github/workflows/pages.yml) zjistí zvolený způsob publikování: při publikaci z větve zkontroluje zveřejněný web, při publikaci přes Actions nasadí adresář `site`. Obě varianty ověřují skutečné HTTP odpovědi zveřejněného webu.
 
 Zdroj frontendu se upravuje v `site/`. Po změnách spusťte `npm run prepare:pages` a nahrajte i aktualizované soubory `index.html`, `assets/`, `hlasovani/`, `vysledky/` a `.nojekyll` v kořeni repozitáře. Testy zachytí chybějící nebo neaktuální kopie, aby se chyba 404 nevrátila.
 

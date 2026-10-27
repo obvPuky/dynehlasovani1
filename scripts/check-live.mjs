@@ -1,6 +1,5 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { config } from "../site/assets/config.js";
 
 const base = new URL(process.argv[2]);
 if (base.protocol !== "https:")
@@ -62,26 +61,4 @@ for (let attempt = 0; attempt < 24; attempt++) {
 if (!deployed) throw lastError;
 console.log(
   "Ověřeno: veřejná úvodní stránka, hlasování, výsledky a JavaScript odpovídají aktuálnímu commitu.",
-);
-
-// Tyto dva neplatné požadavky nikdy nevytvářejí hlas ani nečtou výsledky.
-for (const [name, args, expectedCode] of [
-  ["submit_vote", { p_pumpkin: 0, p_voter_token: null }, "22023"],
-  ["admin_results", { p_password: null }, "28000"],
-]) {
-  const response = await fetch(`${config.supabaseUrl}/rest/v1/rpc/${name}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", apikey: config.supabaseKey },
-    body: JSON.stringify(args),
-    signal: AbortSignal.timeout(15000),
-  });
-  const data = await response.json();
-  assert.equal(
-    data.code,
-    expectedCode,
-    `${name}: veřejný klíč nebo databázová funkce nejsou připravené`,
-  );
-}
-console.log(
-  "Ověřeno: Supabase přijímá veřejný klíč, kontroluje hlas a chrání výsledky. Žádný hlas nebyl přidán.",
 );
